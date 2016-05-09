@@ -25,17 +25,24 @@ app.post('/oppai', multiparty, (req, res) => {
   const filename = path.resolve(__dirname, '../../beatmaps/', md5file(file.path) + '.osu');
 
   fs.readFile(file.path, (err, data) => {
+    fs.unlink(file.path);
     if (err)
       return res.send({error: err});
 
-    fs.writeFile(filename, data, (err) => {
+    fs.writeFile(filename, data, err => {
+      if (err)
+        return res.send({error: err});
 
       const mods = req.body.mods.split(',');
       const options = Object.assign(req.body, {mods});
 
       oppai(filename, options)
-      .then(output => res.send({output}))
-      .catch(error => res.send({error: 'error occured, pls no break'}));
+      .then(output => {
+        res.send({output});
+      })
+      .catch(error => {
+        res.send({error: 'error occured, pls no break'});
+      });
     });
   });
 
