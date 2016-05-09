@@ -33,8 +33,6 @@ app.post('/oppai', multiparty, (req, res) => {
       const mods = req.body.mods.split(',');
       const options = Object.assign(req.body, {mods});
 
-      console.log(options);
-
       oppai(filename, options)
       .then(output => res.send({output}))
       .catch(error => res.send({error: 'error occured, pls no break'}));
