@@ -1,0 +1,5 @@
+web/assets/oppai.js
+web/assets/vendor
+bin
+node_modules
+beatmaps/*.osu

@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="oamaok">
+  <title>oppai-web</title>
+  <link href="assets/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class="container">
+    <h1>OPPAI-WEB<sub>beta</sub></h1>
+    <form id="oppai">
+      <div class="">
+        <label for="map">Select map file: </label>
+        <span class="btn btn-primary btn-file">
+          Browse... <input type="file" accept=".osu" id="map" name="map">
+        </span>
+        <span id="filename"></span>
+      </div>
+      <div class="field">
+        <label for="acc">Accuracy</label>
+        <input type="text" class="form-control" name="acc" id="acc" value="100">
+      </div>
+      <div class="field">
+        <label for="combo">Combo</label>
+        <input type="text" class="form-control" name="combo" id="combo" value="">
+      </div>
+      <div class="field">
+        <label for="misses">Misses</label>
+        <input type="text" class="form-control" name="misses" id="misses" value="0">
+      </div>
+      <div class="mods">
+        <h3>Mods</h3>
+        <div class="mod mod-dt">
+          <input type="checkbox" id="mod-dt">
+          <label for="mod-dt">DoubleTime</label>
+        </div>
+        <div class="mod mod-ez">
+          <input type="checkbox" id="mod-ez">
+          <label for="mod-ez">Easy</label>
+        </div>
+        <div class="mod mod-fl">
+          <input type="checkbox" id="mod-fl">
+          <label for="mod-fl">Flashlight</label>
+        </div>
+        <div class="mod mod-ht">
+          <input type="checkbox" id="mod-ht">
+          <label for="mod-ht">HalfTime</label>
+        </div>
+        <div class="mod mod-hr">
+          <input type="checkbox" id="mod-hr">
+          <label for="mod-hr">HardRock</label>
+        </div>
+        <div class="mod mod-hd">
+          <input type="checkbox" id="mod-hd">
+          <label for="mod-hd">Hidden</label>
+        </div>
+        <div class="mod mod-nf">
+          <input type="checkbox" id="mod-nf">
+          <label for="mod-nf">NoFail</label>
+        </div>
+        <div class="mod mod-so">
+          <input type="checkbox" id="mod-so">
+          <label for="mod-so">SpunOut</label>
+        </div>
+      </div>
+      <input class="btn btn-success" type="submit" value="Give PP!">
+      <div class="clearfix"></div>
+    </form>
+
+    <pre class="output" id="output">Output will be displayed here.</pre>
+  </div>
+  <script src="assets/oppai.js"></script>
+</body>
+</html>

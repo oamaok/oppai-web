@@ -1,0 +1,36 @@
+require('../sass/main.sass');
+
+const file = document.getElementById('map');
+const form = document.getElementById('oppai');
+const output = document.getElementById('output');
+const mods = ['nf', 'ez', 'hd', 'hr', 'dt', 'ht', 'fl', 'so'];
+
+const modInputs = mods.map(mod => document.getElementById('mod-' + mod))
+
+map.addEventListener('change', evt => {
+  document.getElementById('filename').innerText = map.value.replace(/\\/g, '/').replace(/.*\//, '');
+});
+
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const body = new FormData(form);
+  body.append('mods', [...modInputs].filter(node => node.checked).map(node => node.id.substr(-2)));
+
+  fetch('/oppai', {
+    method: 'post',
+    body: body
+  })
+  .then(res => res.json())
+  .then(res => {
+
+    if (res.error) {
+      output.innerText = res.error;
+      return;
+    }
+
+    output.innerText = res.output.split('\n').slice(19).join('\n');
+  })
+  .catch((error) => {
+    output.innerText = res.error;
+  })
+})

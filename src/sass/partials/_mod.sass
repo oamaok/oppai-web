@@ -1,0 +1,48 @@
+.mod
+  width: 25%
+  float: left
+  text-align: center
+  [type="checkbox"]
+    position: absolute
+    opacity: 0
+  label::before
+    transition: all 0.1s ease-out
+    content: ' '
+    display: block
+    width: 92px
+    height: 68px
+    transform: scale(0.8)
+    opacity: 0.2
+    filter: grayscale(75%)
+    background-repeat: no-repeat
+  [type="checkbox"]:checked+label::before
+    transform: scale(1.0) rotate(10deg)
+    opacity: 1
+    filter: none
+  label
+    cursor: pointer
+
+  &.mod-dt 
+    label::before
+      background-image: url('../../web/assets/img/selection-mod-doubletime.png')
+  &.mod-ez 
+    label::before
+      background-image: url('../../web/assets/img/selection-mod-easy.png')
+  &.mod-fl
+    label::before
+      background-image: url('../../web/assets/img/selection-mod-flashlight.png')
+  &.mod-ht
+    label::before
+      background-image: url('../../web/assets/img/selection-mod-halftime.png')
+  &.mod-hr
+    label::before
+      background-image: url('../../web/assets/img/selection-mod-hardrock.png')
+  &.mod-hd
+    label::before
+      background-image: url('../../web/assets/img/selection-mod-hidden.png')
+  &.mod-nf
+    label::before
+      background-image: url('../../web/assets/img/selection-mod-nofail.png')
+  &.mod-so
+    label::before
+      background-image: url('../../web/assets/img/selection-mod-spunout.png')
