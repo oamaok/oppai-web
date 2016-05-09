@@ -18,7 +18,7 @@ module.exports = (beatmap, options) =>
     const misses = parseInt(options.misses) || '';
     const scorev = 'scorev' + (parseInt(options.scorev) || '2');
 
-    const command = [EXECUTABLE_PATH, beatmap, acc, mods.length ? '+' + mods : '', combo ? combo + 'x' : '', combo ? combo + 'm' : '', scorev].join(' ');
+    const command = [EXECUTABLE_PATH, beatmap, acc, mods.length ? '+' + mods : '', combo ? combo + 'x' : '', misses ? misses + 'm' : '', scorev].join(' ');
 
     exec(command, (error, stdout, stderr) => {
       
