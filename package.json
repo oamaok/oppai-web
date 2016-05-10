@@ -1,6 +1,7 @@
 {
   "name": "oppai-web",
-  "version": "1.0.0",
+  "version": "0.0.2",
+  "main": "src/server/index.js",
   "description": "web interface for oppai",
   "author": "oamaok",
   "license": "MIT",
