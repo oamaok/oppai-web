@@ -14,12 +14,14 @@
   <div class="container">
     <h1>OPPAI-WEB<sub>beta</sub></h1>
     <form id="oppai">
-      <div class="">
-        <label for="map">Select map file: </label>
+      <div class="map-field">
         <span class="btn btn-primary btn-file">
-          Browse... <input type="file" accept=".osu" id="map" name="map">
+          Select a map file (.osu)<input type="file" accept=".osu" id="map" name="map">
         </span>
-        <span id="filename"></span>
+        <div class="filename">
+          <label for="filename">Filename: </label>
+          <span id="filename">no file selected!</span>
+        </div>
       </div>
       <div class="field">
         <label for="acc">Accuracy</label>
@@ -73,7 +75,12 @@
     </form>
 
     <pre class="output" id="output">Output will be displayed here.</pre>
-    <div style="margin-top: 2em; opacity: 0.6">Experiencing problems? Missing something? Report issues at <a target="_blank" href="https://github.com/oamaok/oppai-web/issues">Github</a>.</div>
+    <div class="footer">
+      <p>oppai-web is a web interface for <a href="https://github.com/Francesco149/oppai">oppai</a> (osu! pp advanced inspector) written in Node.js.</p>
+      <p>Missing something? Experiencing problems? Request features and report issues at <a target="_blank" href="https://github.com/oamaok/oppai-web">Github</a>.</p>
+      <br/>
+      <p>Copyright &copy; 2016 Teemu Pääkkönen (oamaok)</p>
+    </div>
   </div>
   <script src="assets/oppai.js"></script>
 </body>

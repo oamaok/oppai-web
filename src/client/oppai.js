@@ -28,7 +28,7 @@ form.addEventListener('submit', (evt) => {
       return;
     }
 
-    output.innerText = res.output.split('\n').slice(19).join('\n');
+    output.innerText = res.output.split('\n').slice(-16).join('\n').trim();
   })
   .catch((error) => {
     output.innerText = res.error;
