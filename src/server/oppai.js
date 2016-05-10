@@ -16,7 +16,7 @@ module.exports = (beatmap, options) =>
     const mods = (options.mods).filter(selected => availMods.some(mod => mod === selected)).join('');
     const combo = parseInt(options.combo) || '';
     const misses = parseInt(options.misses) || '';
-    const scorev = 'scorev' + (parseInt(options.scorev) || '2');
+    const scorev = 'scorev' + (parseInt(options.scorev) || '1');
 
     const command = [EXECUTABLE_PATH, beatmap, acc, mods.length ? '+' + mods : '', combo ? combo + 'x' : '', misses ? misses + 'm' : '', scorev].join(' ');
 
