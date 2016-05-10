@@ -14,13 +14,15 @@ app.post('/oppai', multiparty, (req, res) => {
 
   console.log(req.body);
 
-  if (!req.files || !req.files.map)
+  if (!req.files || !req.files.map)
     return res.send({error: 'invalid or no file'}).end();
 
   const file = req.files.map;
 
-  if (file.name.substr(-4) !== '.osu' || file.size > 1024 * 1024 * 2)
+  if (file.name.substr(-4) !== '.osu' || file.size > 1024 * 1024 * 2) {
+    fs.unlink(file.path);
     return res.send({error: 'invalid or no file'}).end();
+  }
 
   const filename = path.resolve(__dirname, '../../beatmaps/', md5file(file.path) + '.osu');
 
@@ -34,13 +36,15 @@ app.post('/oppai', multiparty, (req, res) => {
         return res.send({error: err});
 
       const mods = req.body.mods.split(',');
-      const options = Object.assign(req.body, {mods});
+      const acc = req.body.acc.replace(',','.');
+      const options = Object.assign({}, req.body, {mods, acc});
 
       oppai(filename, options)
       .then(output => {
         res.send({output});
       })
       .catch(error => {
+ console.error(error);
         res.send({error: 'error occured, pls no break'});
       });
     });
