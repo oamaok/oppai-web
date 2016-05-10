@@ -14,12 +14,14 @@
     "connect-multiparty": "^2.0.0",
     "css-loader": "^0.23.1",
     "express": "^4.13.4",
+    "file-loader": "^0.8.5",
     "md5-file": "^2.0.4",
     "multer": "^1.1.0",
     "node-sass": "^3.7.0",
     "postcss-loader": "^0.9.1",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.0"
   }
 }
