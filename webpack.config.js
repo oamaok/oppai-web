@@ -23,7 +23,7 @@ module.exports = {
         test: /\.sass$/, loaders: ['style', 'css', 'postcss', 'sass'],
       },
       {
-        test: /\.png$/, loader: 'url-loader'
+        test: /(\.png|\.svg)$/, loader: 'url-loader'
       }
     ]
   },

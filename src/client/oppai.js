@@ -13,6 +13,7 @@ map.addEventListener('change', evt => {
 
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
+  output.innerHTML = '<div class="loading"></div>';
   const body = new FormData(form);
   body.append('mods', [...modInputs].filter(node => node.checked).map(node => node.id.substr(-2)));
 
