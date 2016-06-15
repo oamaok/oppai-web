@@ -10,11 +10,16 @@
   <meta name="tags" content="osu, pp, calculator, performance points, beatmap, oppai, mods, accuracy, combo, misses">
   <title>oppai-web - online pp calculator for osu!</title>
   <link href="assets/vendor/bootstrap.min.css" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Exo 2' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <div class="container">
-    <h1>OPPAI-WEB<sub>beta</sub></h1>
+    <div class="ezpp">
+      <div class="logo"></div>
+      <p><b>ezpp!</b> allows you to calculate the osu! pp values for a given beatmap directly in the browser. Just go to a beatmap's page, unranked or not, and click the extension.</p>
+      <a href="https://chrome.google.com/webstore/detail/ezpp/aimihpobjpagjiakhcpijibnaafdniol">Download for Chrome!</a>
+    </div>
+    <h1>OPPAI-WEB</h1>
     <form id="oppai">
       <div class="map-field">
         <label class="btn btn-primary btn-file">
@@ -72,14 +77,14 @@
         </div>
         <div class="clearfix"></div>
       </div>
-      <input class="btn btn-success" type="submit" value="Give PP!">
+      <input class="btn btn-success" type="submit" value="Calculate!">
       <div class="clearfix"></div>
     </form>
 
     <pre class="output" id="output">Output will be displayed here.</pre>
     <div class="footer">
       <p>oppai-web is a web interface for <a href="https://github.com/Francesco149/oppai">oppai</a> (osu! pp advanced inspector) written in Node.js.</p>
-      <p>Missing something? Experiencing problems? Request features and report issues at <a target="_blank" href="https://github.com/oamaok/oppai-web">Github</a>.</p>
+      <p><a target="_blank" href="https://github.com/oamaok/oppai-web">This project is open source.</a></p>
       <br/>
       <p style="font-size: 0.75em">Copyright &copy; 2016 Teemu Pääkkönen (oamaok)</p>
     </div>
