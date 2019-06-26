@@ -1,14 +1,12 @@
-require('../sass/main.sass');
-
 const file = document.getElementById('map');
 const form = document.getElementById('oppai');
 const output = document.getElementById('output');
 const mods = ['nf', 'ez', 'hd', 'hr', 'dt', 'ht', 'fl', 'so'];
 
-const modInputs = mods.map(mod => document.getElementById('mod-' + mod))
+const modInputs = mods.map(mod => document.getElementById(`mod-${mod}`));
 
-map.addEventListener('change', evt => {
-  document.getElementById('filename').innerText = map.value.replace(/\\/g, '/').replace(/.*\//, '');
+file.addEventListener('change', (evt) => {
+  document.getElementById('filename').innerText = file.value.replace(/\\/g, '/').replace(/.*\//, '');
 });
 
 form.addEventListener('submit', (evt) => {
@@ -19,19 +17,18 @@ form.addEventListener('submit', (evt) => {
 
   fetch('/oppai', {
     method: 'post',
-    body: body
+    body,
   })
-  .then(res => res.json())
-  .then(res => {
+    .then(res => res.json())
+    .then((res) => {
+      if (res.error) {
+        output.innerText = res.error;
+        return;
+      }
 
-    if (res.error) {
+      output.innerText = res.output.split('\n').slice(-16).join('\n').trim();
+    })
+    .catch((error) => {
       output.innerText = res.error;
-      return;
-    }
-
-    output.innerText = res.output.split('\n').slice(-16).join('\n').trim();
-  })
-  .catch((error) => {
-    output.innerText = res.error;
-  })
-})
+    });
+});

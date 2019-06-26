@@ -1,46 +1,61 @@
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-// Check for production flag
-const PROD = process.argv.indexOf('-p') !== -1;
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/client/oppai.js',
-  output: {
-    path: __dirname,
-    filename: 'web/assets/oppai.js',
+  entry: {
+    oppai: [
+      path.resolve(__dirname, 'src/client/oppai.js'),
+      path.resolve(__dirname, 'src/client/styles/main.sass'),
+
+    ],
   },
+
+  mode: process.env.NODE_ENV,
+
+  output: {
+    publicPath: '',
+    path: path.resolve(__dirname, 'build'),
+    filename: '[name].js',
+  },
+
+  plugins: [
+    new CopyWebpackPlugin([{
+      from: './src/client/index.html',
+      to: '.',
+    }]),
+
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+    }),
+  ],
+
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.(jpg|png|svg)$/,
+        use: 'url-loader',
+
+      },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /^node_modules/,
-        query: {
-          presets: ['es2015']
-        }
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
       },
       {
-        test: /\.sass$/, loaders: ['style', 'css', 'postcss', 'sass'],
+        test: /\.sass$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          'css-loader',
+          'sass-loader'],
       },
-      {
-        test: /(\.png|\.svg)$/, loader: 'url-loader'
-      }
-    ]
+    ],
   },
-  // Only enable minification and NODE_ENV modifications
-  // when launched with -p
-  plugins: PROD ? [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
-    })
-  ] : [],
-  postcss: () => [autoprefixer],
-  resolve: {
-    extensions: ['', '.js']
-  }
 };
