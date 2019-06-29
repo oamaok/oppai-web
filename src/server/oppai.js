@@ -15,7 +15,12 @@ module.exports = (beatmap, _options = {}) => {
     const misses = parseInt(options.misses, 10) || '';
     const scorev = `scorev${parseInt(options.scorev, 10) || '1'}`;
 
-    const command = [EXECUTABLE_PATH, beatmap, acc, mods.length ? `+${mods}` : '', combo ? `${combo}x` : '', misses ? `${misses}m` : ''].join(' ');
+    const diff = [];
+    if (options.ar) diff.push(`AR${parseFloat(options.ar)}`);
+    if (options.od) diff.push(`OD${parseFloat(options.od)}`);
+    if (options.cs) diff.push(`CS${parseFloat(options.cs)}`);
+
+    const command = [EXECUTABLE_PATH, beatmap, acc, mods.length ? `+${mods}` : '', combo ? `${combo}x` : '', misses ? `${misses}m` : '', ...diff].join(' ');
 
     exec(command, (error, stdout, stderr) => {
       if (error) return reject(error);

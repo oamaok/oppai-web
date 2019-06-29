@@ -1,5 +1,5 @@
 .mods
-  margin-bottom: 1em
+  margin-bottom: 2em
 .mod
   width: 25%
   float: left
@@ -9,6 +9,7 @@
     position: absolute
     opacity: 0
   label::before
+
     transition: all 0.1s ease-out
     content: ' '
     display: block
@@ -18,12 +19,17 @@
     opacity: 0.2
     filter: grayscale(75%)
     background-repeat: no-repeat
-  [type="checkbox"]:checked+label::before
-    transform: scale(1.0) rotate(10deg)
-    opacity: 1
-    filter: none
+  [type="checkbox"]:checked+label
+
+    transform: scale(1.08)
+    color: #29b
+    &::before
+      transform: scale(0.9091) rotate(10deg)
+      opacity: 1
+      filter: none
   label
     cursor: pointer
+    transition: all 0.1s ease-out
 
   &.mod-dt 
     label::before

@@ -12,3 +12,25 @@
 
   &:nth-child(4)
     padding-right: 0
+
+.override-settings
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  .override, .override-toggle
+    margin-bottom: 15px
+    width: 45%
+
+  .override-toggle input
+    position: relative
+    top: 2px
+    left: 4px
+
+  .override
+    opacity: 0.5
+    *
+      cursor: not-allowed
+  &.enabled .override
+    opacity: 1
+    *
+     cursor: auto
